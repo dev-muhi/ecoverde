@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render
 from django.http.response import HttpResponse
 
@@ -22,9 +23,16 @@ def properties(request):
     return render(request, 'properties.html', {'nbar': 'properties'})
 
 
+def properties_single(request):
+    return render(request, 'properties-single.html')
+
+
 def blog(request):
     return render(request, 'blog.html', {'nbar': 'blog'})
 
+
+def blog_single(request):
+    return render(request, 'blog-single.html')
 
 def contact(request):
     return render(request, 'contact.html', {'nbar': 'contact'})
