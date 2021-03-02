@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Announcements
+from .models import Announcement
 
-admin.site.register(Announcements)
+admin.site.register(Announcement)

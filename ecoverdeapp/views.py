@@ -1,10 +1,10 @@
-from django.http import request
 from django.shortcuts import render
-from django.http.response import HttpResponse
+from ecoverdeapp.models import Announcement
 
 
 def index(request):
-    return render(request, 'index.html', {'nbar': '/'})
+    baza = Announcement.objects.all()
+    return render(request, 'index.html', {'baza': baza, 'nbar': 'index'} )
 
 
 def about(request):

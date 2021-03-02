@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ecoverde',
         'USER': 'root',
-        'PASSWORD': ''
+        'PASSWORD': ""
     }
 }
 
