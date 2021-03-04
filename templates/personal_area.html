@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
-{% block content %}Personal area{% endblock %}
+{% block title %} Personal area {% endblock %}
+{% block content %}
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center">
@@ -12,13 +12,14 @@
         </div>
         <div class="row ftco-animate">
             <div class="col-md-12">
+                {% if user.is_authenicated %}
                 <div class="carousel-properties owl-carousel">
-                    {% for announcement in baza %}
+                    {% for announcement in announcements %}
                     <div class="item">
                         <div class="property-wrap ftco-animate">
                             <a href="#" class="img" style="background-image: url({{announcement.image.url}});">
                                 <div class="rent-sale">
-                                    <span class="sale">{{announcement.status}}</span>
+                                    <span class="sale">{{.status}}</span>
                                 </div>
                                 <p class="price"><span class="orig-price">${{announcement.price}}</span></p>
                             </a>
@@ -46,8 +47,11 @@
                     </div>
                     {% endfor %}                                        
                 </div>
+                {% else %}
+                <p>None</p>
+                {% endif %}
             </div>
         </div>
     </div>
 </section>
-{% endblock %}
+{% endblock %} 

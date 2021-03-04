@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ecoverdeapp',
+    'accounts',
+    'personal_area',
 ]
 
 MIDDLEWARE = [

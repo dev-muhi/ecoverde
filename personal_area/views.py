@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from ecoverdeapp.models import Announcement, View, Status, District, Region, Type
+from ecoverdeapp.models import Announcement, Region, District, Type, Status, View
 from django.contrib.auth.models import User
 import json
 from django.core import serializers
@@ -7,22 +7,20 @@ from PIL import Image
 from django.core.files.storage import FileSystemStorage
 
 
-def personal(request, username):
+def person(request, username):
     announcements = Announcement.objects.filter(author=username)
     user = User.objects.filter(username=username)
     return render(request, 'personal_area.html', {'announcements': announcements, 'user': user})
 
 
 def add(request, username):
-
     regions = Region.objects.all()
-    json_serializer = serializers.get_serializer("json")()
-    districts = json_serializer.serialize(District.objects.all(), ensure_ascii=False)
+    json_seria = serializers.get_serializer("json")()
+    districts = json_seria.serialize(District.objects.all(), ensure_ascii = False)
     statuses = Status.objects.all()
     types = Type.objects.all()
     views = View.objects.all()
 
-    
     if request.method == 'POST':
         title = request.POST['title']
         content = request.POST['content']
@@ -34,7 +32,7 @@ def add(request, username):
         status_id = request.POST['status_id']
         price = request.POST['price']
         features = request.POST['features']
-        image = request.FILES.getlist('image')
+        image = request.POST.getlist('image')
         phone = request.POST.get('phone', '')
 
         announcement = Announcement(
@@ -61,4 +59,3 @@ def add(request, username):
         'types': types,
         'views': views
     })
-

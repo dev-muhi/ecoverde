@@ -22,8 +22,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('adminDev/', admin.site.urls),
+    path('muhi/', admin.site.urls),
     path('', include('ecoverdeapp.urls')),
-    path('accounts/', include('accounts.urls'))
+    path('accounts/', include('accounts.urls')),
+    path('<username>/', include('personal_area.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
